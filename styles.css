@@ -1,30 +1,23 @@
 /* Estilos do projeto de fogos de artifício (index.html) */
 
 body {
-    /* Mantém o fundo escuro do projeto original de fogos */
     background-color: #111;
-    /* Permite rolagem para ver o conteúdo abaixo do canvas */
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    /* Garante que o body tenha pelo menos 200vh para permitir a rolagem */
     height: 200vh;
 }
 
 canvas {
-    /* Remove 'position: fixed' */
     position: absolute;
-    /* The element will be positioned relative to the nearest positioned ancestor (in this case, the body) */
     top: 0;
     left: 0;
     z-index: -1;
 }
 
 p {
-    /* Remove 'position: fixed' */
     position: absolute;
-    /* The element will be positioned relative to the nearest positioned ancestor (in this case, the body) */
     font: 16px Verdana;
     color: #eee;
     height: 25px;
@@ -49,10 +42,9 @@ p>a:first-of-type {
 }
 
 
-/* Estilos do projeto da carta (carta.html) */
+/* Estilos do projeto da carta */
 
 .card-container {
-    /* Posiciona o card abaixo da tela de fogos, que tem 100vh de altura */
     margin-top: 100vh;
     perspective: 2000px;
     cursor: pointer;
@@ -63,7 +55,6 @@ p>a:first-of-type {
     font-family: 'Arial', sans-serif;
     position: relative;
     z-index: 2;
-    /* Garante que o card esteja acima do canvas */
 }
 
 .card {
@@ -103,6 +94,23 @@ p>a:first-of-type {
     /* Azul mais escuro para título */
 }
 
+
+/* Esconde o conteúdo interno por padrão */
+
+.inside h2,
+.inside p {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    /* sem delay por padrão para sumir rápido */
+}
+
+.card.open .inside h2,
+.card.open .inside p {
+    opacity: 1;
+    transition-delay: 0.2s;
+    /* espera a capa abrir igual à mensagem da parte de trás */
+}
+
 .cover {
     position: absolute;
     width: 100%;
@@ -128,17 +136,27 @@ p>a:first-of-type {
 
 /* Estilo da capa da carta com o fundo de bolinhas */
 
+
+/* Centralizar bolo e texto dentro da capa */
+
 .cover-front {
-    background: radial-gradient(circle, #ff6f61 20%, transparent 20%) 0 0, radial-gradient(circle, #ffcc00 20%, transparent 20%) 40px 40px;
+    background: radial-gradient(circle, rgba(255, 111, 97, 0.4) 20%, transparent 20%) 0 0, radial-gradient(circle, rgba(115, 108, 204, 0.4) 20%, transparent 20%) 40px 40px;
     background-size: 80px 80px;
     background-repeat: repeat;
     color: white;
-    font-size: 1.8em;
     font-weight: bold;
-    padding: 20px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    overflow: hidden;
 }
+
+
+/* Parte de trás com padrão azul claro */
 
 .cover-back {
     background: lightblue;
@@ -152,10 +170,96 @@ p>a:first-of-type {
     text-align: center;
     transform: rotateY(180deg);
     border: 2px solid #5ca0d3;
-    /* Azul mais escuro combinando com o fundo */
+    /* Azul mais escuro combinando */
 }
 
 .card.open .cover {
     transform: rotateY(-180deg);
     box-shadow: -10px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* estilos originais do styles.css (projeto index) */
+
+
+/* ... conteúdo do seu styles.css atual ... */
+
+
+/* estilos do bolo integrados */
+
+:root {
+    --candle-top: 200px;
+    /* Sobe a vela para o topo do bolo */
+    --candle-width: 6px;
+    /* Largura proporcional */
+    --candle-height: 30px;
+    /* Altura proporcional */
+    --flame-width: 10px;
+    --flame-height: 15px;
+}
+
+
+/* Ajuste do tamanho proporcional */
+
+.cake-wrap {
+    width: 80%;
+    max-height: 65%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#cake {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.candle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: var(--candle-top);
+    width: var(--candle-width);
+    height: var(--candle-height);
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.06) 10%, transparent 10%), linear-gradient(180deg, rgba(255, 0, 0, 0.06) 40%, transparent 40%);
+    background-size: 100% 10px, 100% 20px;
+}
+
+.candle .flame {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(-1 * var(--flame-height) + 2px);
+    width: var(--flame-width);
+    height: var(--flame-height);
+    background: rgba(254, 248, 97, 0.95);
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    box-shadow: 0 0 18px 6px rgba(248, 233, 209, 0.35);
+}
+
+.text {
+    color: #8b6a60;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.5rem;
+    /* tamanho responsivo e proporcional à carta */
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.text h1 {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    margin: 0;
+}
+
+.name {
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    font-weight: 600;
+    margin: 0;
 }

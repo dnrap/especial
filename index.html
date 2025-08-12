@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parabéns pessoa especial</title>
-    <link rel="stylesheet" href="./style/styles.css">
+    <title>Feliz Aniversário!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <canvas id=c></canvas>
+
+    <canvas id="c"></canvas>
     <p>De seu filho amado <a href="#"></a><span>,<a
                 href="https://www.instagram.com/mais1danieu?utm_source=qr&igsh=MXN5dTE2NzdsdGg0cA==">Daniel</a></span>
     </p>
-    
+
+    <div class="card-container" id="birthdayCard">
+        <div class="card">
+            <div class="inside">
+                <h2>Parabéns!</h2>
+                <p>
+                    Que seu dia seja repleto de alegria, amor e momentos inesquecíveis.<br>
+                    💖 Feliz Aniversário! 💖
+                </p>
+            </div>
+
+            <div class="cover">
+                <div class="cover-front">
+                    🎉 Feliz Aniversário 🎉
+                </div>
+                <div class="cover-back">
+                    Mensagem na parte de trás da capa 🎁<br>
+                    (Coloque o que quiser aqui!)
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
+        // O código JavaScript para a animação de fogos de artifício e a lógica da carta
+        // está todo aqui, mantendo o HTML e o CSS separados.
+
+        // Script do Projeto Index (Fireworks)
         var w = c.width = window.innerWidth,
             h = c.height = window.innerHeight,
             ctx = c.getContext('2d'),
@@ -24,7 +49,7 @@
             hh = h / 2,
 
             opts = {
-                strings: ['Feliz', 'teste!', '❤️'],
+                strings: ['Feliz', 'Aniversário!', '❤️'],
                 charSize: 30,
                 charSpacing: 35,
                 lineHeight: 40,
@@ -286,7 +311,7 @@
                     ctx.stroke();
 
                     ctx.fillStyle = this.lightColor.replace('light', 70);
-                    ctx.fillText(this.char, this.x + this.dx, this.y + this.dy);
+                    ctx.fillText(this.char, this.x + this.dx, this.y + this.dy + this.size);
 
                     if (this.tick >= this.inflateTime) {
                         this.tick = 0;
@@ -409,7 +434,6 @@
         anim();
 
         window.addEventListener('resize', function () {
-
             w = c.width = window.innerWidth;
             h = c.height = window.innerHeight;
 
@@ -417,8 +441,13 @@
             hh = h / 2;
 
             ctx.font = opts.charSize + 'px Verdana';
-        })
+        });
+
+        // Script para abrir a carta ao clicar
+        const cardContainer = document.getElementById('birthdayCard');
+        cardContainer.addEventListener('click', () => {
+            cardContainer.querySelector('.card').classList.toggle('open');
+        });
     </script>
 </body>
-
 </html>

@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversário!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <canvas id="c"></canvas>
-    <p>De seu filho amado <a href="#"></a><span>,<a
-                href="https://www.instagram.com/mais1danieu?utm_source=qr&igsh=MXN5dTE2NzdsdGg0cA==">Daniel</a></span>
+    <p>De seus filhos amados
+        <a href="#"></a><span>,<a
+                href="https://www.instagram.com/mais1danieu?utm_source=qr&igsh=MXN5dTE2NzdsdGg0cA==">Daniel</a></span> e
+        <span><a href="https://www.instagram.com/l_thiago01?igsh=MXcydTdkbWcxdjlncQ=="> Lucas Thiago</a></span>
     </p>
 
     <div class="card-container" id="birthdayCard">
@@ -18,8 +22,7 @@
             <div class="inside">
                 <h2>Parabéns!</h2>
                 <p>
-                    Que seu dia seja repleto de alegria, amor e momentos inesquecíveis.<br>
-                    💖 Feliz Aniversário! 💖
+                    Que seu dia seja repleto de alegria, amor e momentos inesquecíveis.<br> 💖 Feliz Aniversário! 💖
                 </p>
             </div>
 
@@ -28,8 +31,7 @@
                     🎉 Feliz Aniversário 🎉
                 </div>
                 <div class="cover-back">
-                    Mensagem na parte de trás da capa 🎁<br>
-                    (Coloque o que quiser aqui!)
+                    Mensagem na parte de trás da capa 🎁<br> (Coloque o que quiser aqui!)
                 </div>
             </div>
         </div>
@@ -49,7 +51,7 @@
             hh = h / 2,
 
             opts = {
-                strings: ['Feliz', 'Aniversário!', '❤️'],
+                strings: ['Feliz Aniversário! ', 'Feliz Ano novo!', 'Amamos Você❤️'],
                 charSize: 30,
                 charSpacing: 35,
                 lineHeight: 40,
@@ -119,7 +121,7 @@
 
             this.reset();
         }
-        Letter.prototype.reset = function () {
+        Letter.prototype.reset = function() {
 
             this.phase = 'firework';
             this.tick = 0;
@@ -127,9 +129,11 @@
             this.spawningTime = opts.fireworkSpawnTime * Math.random() | 0;
             this.reachTime = opts.fireworkBaseReachTime + opts.fireworkAddedReachTime * Math.random() | 0;
             this.lineWidth = opts.fireworkBaseLineWidth + opts.fireworkAddedLineWidth * Math.random();
-            this.prevPoints = [[0, hh, 0]];
+            this.prevPoints = [
+                [0, hh, 0]
+            ];
         }
-        Letter.prototype.step = function () {
+        Letter.prototype.step = function() {
 
             if (this.phase === 'firework') {
 
@@ -342,6 +346,7 @@
                 }
             }
         }
+
         function Shard(x, y, vx, vy, color) {
 
             var vel = opts.fireworkShardBaseVel + opts.fireworkShardAddedVel * Math.random();
@@ -352,14 +357,16 @@
             this.x = x;
             this.y = y;
 
-            this.prevPoints = [[x, y]];
+            this.prevPoints = [
+                [x, y]
+            ];
             this.color = color;
 
             this.alive = true;
 
             this.size = opts.fireworkShardBaseSize + opts.fireworkShardAddedSize * Math.random();
         }
-        Shard.prototype.step = function () {
+        Shard.prototype.step = function() {
 
             this.x += this.vx;
             this.y += this.vy += opts.gravity;
@@ -388,6 +395,7 @@
             if (this.prevPoints[0][1] > hh)
                 this.alive = false;
         }
+
         function generateBalloonPath(x, y, size) {
 
             ctx.moveTo(x, y);
@@ -433,7 +441,7 @@
 
         anim();
 
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', function() {
             w = c.width = window.innerWidth;
             h = c.height = window.innerHeight;
 
@@ -450,4 +458,5 @@
         });
     </script>
 </body>
+
 </html>

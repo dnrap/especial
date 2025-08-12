@@ -225,3 +225,22 @@ p>a:first-of-type {
     font-weight: 600;
     margin: 0;
 }
+
+
+/* Estilo do bolo importado */
+
+#cake {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Garante centralização perfeita dentro da cover-inner */
+
+.cover-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

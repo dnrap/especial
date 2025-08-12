@@ -156,6 +156,33 @@ p>a:first-of-type {
 }
 
 
+/* Nova div interna */
+
+.cover-inner {
+    background: radial-gradient(circle, rgba(255, 111, 97, 0.4) 20%, transparent 20%) 0 0, radial-gradient(circle, rgba(115, 108, 204, 0.4) 20%, transparent 20%) 40px 40px;
+    background-size: 80px 80px;
+    background-repeat: repeat;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    overflow: hidden;
+    /* borda igual à da capa */
+    border: 4px solid #5ca0d3;
+    /* transparente porque a capa não tem borda visível */
+    border-radius: 4px;
+    /* proporção igual em todos os lados */
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    box-sizing: border-box;
+}
+
+
 /* Parte de trás com padrão azul claro */
 
 .cover-back {
@@ -176,71 +203,6 @@ p>a:first-of-type {
 .card.open .cover {
     transform: rotateY(-180deg);
     box-shadow: -10px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-
-/* estilos originais do styles.css (projeto index) */
-
-
-/* ... conteúdo do seu styles.css atual ... */
-
-
-/* estilos do bolo integrados */
-
-:root {
-    --candle-top: 200px;
-    /* Sobe a vela para o topo do bolo */
-    --candle-width: 6px;
-    /* Largura proporcional */
-    --candle-height: 30px;
-    /* Altura proporcional */
-    --flame-width: 10px;
-    --flame-height: 15px;
-}
-
-
-/* Ajuste do tamanho proporcional */
-
-.cake-wrap {
-    width: 80%;
-    max-height: 65%;
-    height: auto;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-#cake {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.candle {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: var(--candle-top);
-    width: var(--candle-width);
-    height: var(--candle-height);
-    background: #ffffff;
-    border-radius: 4px;
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.06);
-    background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.06) 10%, transparent 10%), linear-gradient(180deg, rgba(255, 0, 0, 0.06) 40%, transparent 40%);
-    background-size: 100% 10px, 100% 20px;
-}
-
-.candle .flame {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: calc(-1 * var(--flame-height) + 2px);
-    width: var(--flame-width);
-    height: var(--flame-height);
-    background: rgba(254, 248, 97, 0.95);
-    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
-    box-shadow: 0 0 18px 6px rgba(248, 233, 209, 0.35);
 }
 
 .text {
